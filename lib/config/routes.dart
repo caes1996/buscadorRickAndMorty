@@ -6,6 +6,10 @@ final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', name: CharacterListPage.name, builder: (context, state) => const CharacterListPage()),
-    GoRoute(path: '/detail', name: CharacterDetailPage.name, builder: (context, state) => const CharacterDetailPage()),
+    GoRoute( path: '/detail', name: CharacterDetailPage.name, builder: (context, state) {
+        int? id = state.extra as int;
+        return CharacterDetailPage(id: id);
+      },
+    ),
   ]
 );

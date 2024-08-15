@@ -1,5 +1,6 @@
 // lib/cubits/character_list_cubit.dart
 import 'package:bloc/bloc.dart';
+import 'package:buscador_rick_and_morty/domain/models/character_model.dart';
 import 'package:buscador_rick_and_morty/domain/services/character_services.dart';
 import 'package:meta/meta.dart';
 
@@ -8,26 +9,12 @@ class CharacterDetailCubit extends Cubit<CharacterDetailCubitState> {
 
   CharacterDetailCubit(this._characterService) : super(CharacterDetailCubitInitial());
 
-  Future<void> fetchCharactersByPage() async {
+  Future<void> fetchCharactersByID({required int id}) async {
     try {
       emit(CharacterDetailCubitLoading());
-      final characters = await _characterService.getCharactersByPage();
-      if (characters != null) {
-        emit(CharacterDetailCubitLoaded(characters.results));
-      } else {
-        emit(CharacterDetailCubitError("Error fetching character list"));
-      }
-    } catch (e) {
-      emit(CharacterDetailCubitError(e.toString()));
-    }
-  }
-
-  Future<void> fetchCharactersByName({required String name}) async {
-    try {
-      emit(CharacterDetailCubitLoading());
-      final characters = await _characterService.getCharactersByName(name: name);
-      if (characters != null) {
-        emit(CharacterDetailCubitLoaded(characters.results));
+      final character = await _characterService.fetchCharactersByID(id: id);
+      if (character != null) {
+        emit(CharacterDetailCubitLoaded(character));
       } else {
         emit(CharacterDetailCubitError("Error fetching character list"));
       }
@@ -45,8 +32,8 @@ class CharacterDetailCubitInitial extends CharacterDetailCubitState {}
 class CharacterDetailCubitLoading extends CharacterDetailCubitState {}
 
 class CharacterDetailCubitLoaded extends CharacterDetailCubitState {
-  final List<dynamic> characters;
-  CharacterDetailCubitLoaded(this.characters);
+  final CharacterModel character;
+  CharacterDetailCubitLoaded(this.character);
 }
 
 class CharacterDetailCubitError extends CharacterDetailCubitState {

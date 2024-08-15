@@ -1,14 +1,14 @@
 class InfoResponseModel {
     int count;
     int pages;
-    String next;
-    dynamic prev;
+    String? next;
+    String? prev;
 
     InfoResponseModel({
         required this.count,
         required this.pages,
-        required this.next,
-        required this.prev,
+        this.next,
+        this.prev,
     });
 
     factory InfoResponseModel.fromJson(Map<String, dynamic> json) => InfoResponseModel(
