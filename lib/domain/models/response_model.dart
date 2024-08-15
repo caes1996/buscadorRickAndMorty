@@ -1,8 +1,8 @@
-import 'package:buscador_rick_and_morty/domain/models/page_info_model.dart';
+import 'package:buscador_rick_and_morty/domain/models/info_response_model.dart';
 import 'package:buscador_rick_and_morty/domain/models/character_model.dart';
 
 class ResponseModel {
-    PageInfoModel info;
+    InfoResponseModel info;
     List<CharacterModel> results;
 
     ResponseModel({
@@ -11,7 +11,7 @@ class ResponseModel {
     });
 
     factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
-        info: PageInfoModel.fromJson(json["info"]),
+        info: InfoResponseModel.fromJson(json["info"]),
         results: List<CharacterModel>.from(json["results"].map((x) => CharacterModel.fromJson(x))),
     );
 

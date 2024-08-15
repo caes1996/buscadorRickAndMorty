@@ -1,17 +1,17 @@
-class PageInfoModel {
+class InfoResponseModel {
     int count;
     int pages;
     String next;
     dynamic prev;
 
-    PageInfoModel({
+    InfoResponseModel({
         required this.count,
         required this.pages,
         required this.next,
         required this.prev,
     });
 
-    factory PageInfoModel.fromJson(Map<String, dynamic> json) => PageInfoModel(
+    factory InfoResponseModel.fromJson(Map<String, dynamic> json) => InfoResponseModel(
         count: json["count"],
         pages: json["pages"],
         next: json["next"],
