@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bloc: ^8.1.4
+  bloc_test: ^9.1.7
   cupertino_icons: ^1.0.6
   dio: ^5.6.0
   flutter:
@@ -37,6 +38,7 @@ dependencies:
   go_router: ^14.2.3
   material_symbols_icons: ^4.2780.0
   meta: ^1.11.0
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_lints: ^3.0.0
