@@ -120,7 +120,7 @@ class _CharacterListPageState extends State<CharacterListPage> {
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: Theme.of(context).highlightColor)
         ),
-        child: const Text('LOAD MORE', style: TextStyle(
+        child: const Text('Cargar más', style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.w600
         )),
